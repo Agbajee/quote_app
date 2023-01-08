@@ -8,7 +8,6 @@ void main() {
 
 class QuoteApp extends StatelessWidget {
   const QuoteApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -17,7 +16,7 @@ class QuoteApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Q'),
+      home: const MyHomePage(title: 'My Quotes'),
     );
   }
 }
@@ -32,44 +31,44 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       appBar: AppBar(
-        
         backgroundColor: Color(0xFF101f27),
         centerTitle: true,
-        leading:
-          Icon(
-            Icons.home,
-            color: Colors.white,
-            size: 24,
-          ),
-        title: Text(
-          widget.title,
-          style: TextStyle(
-            color: Color(0xFFFFFFFF),
-            fontSize: 16
-          )
+        leading: Icon(
+          Icons.home,
+          color: Colors.white,
+          size: 24,
         ),
+        title: Text(widget.title,
+            style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 16)),
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Color(0xFF62717b),
-              ),
-              alignment: Alignment.center,
-              width: 350,
-              height: 200,
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 220),
-
-            )
-            
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
+                  color: Color(0xffd6d6d6),
+                ),
+                alignment: Alignment.center,
+                width: screenWidth,
+                height: 300,
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 220),
+                child: Text(
+                  'Quote of the day',
+                  style: TextStyle(
+                    color: Color(0xFF102027),
+                    fontSize:22,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ))
           ],
         ),
       ),
@@ -78,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: null,
         tooltip: 'Increment',
         child: const Icon(Icons.lightbulb),
-      ), 
+      ),
     );
   }
 }
