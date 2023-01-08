@@ -13,11 +13,11 @@ class QuoteApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Daily Quotes',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Q'),
     );
   }
 }
@@ -38,13 +38,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         
-        backgroundColor: Color(0xFF37474f),
+        backgroundColor: Color(0xFF101f27),
         centerTitle: true,
+        leading:
+          Icon(
+            Icons.home,
+            color: Colors.white,
+            size: 24,
+          ),
         title: Text(
           widget.title,
           style: TextStyle(
             color: Color(0xFFFFFFFF),
-            fontSize: 28
+            fontSize: 16
           )
         ),
       ),
@@ -52,11 +58,23 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5.0),
+                color: Color(0xFF62717b),
+              ),
+              alignment: Alignment.center,
+              width: 350,
+              height: 200,
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 220),
+
+            )
             
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xFFef6c00),
         onPressed: null,
         tooltip: 'Increment',
         child: const Icon(Icons.lightbulb),
