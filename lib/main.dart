@@ -16,7 +16,7 @@ class QuoteApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: const MyHomePage(title: 'My Quotes'),
+      home: const MyHomePage(title: 'Inspirational Quotes'),
     );
   }
 }
@@ -31,11 +31,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List quotes = [
+    'God deh',
+    'No matter how short you are, if you get outside you will see the sky.',
+    'Even A Yahoo can Manufacture Chips that Controls Dadauda',
+    'Just Dey Play'
+  ];
+  int _index = 1;
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF101f27),
@@ -48,36 +54,42 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title,
             style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 16)),
       ),
-      body: Center(
+      body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
                   color: Color(0xffd6d6d6),
                 ),
                 alignment: Alignment.center,
                 width: screenWidth,
                 height: 300,
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 220),
+                padding: EdgeInsets.fromLTRB(50.0, 5.0, 70.0, 5.0),
                 child: Text(
-                  'Quote of the day',
+                  '"${quotes[_index % quotes.length]}"',
                   style: TextStyle(
                     color: Color(0xFF102027),
                     fontSize:22,
                     fontWeight: FontWeight.w400,
                   ),
-                ))
+                )),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFFef6c00),
-        onPressed: null,
+        onPressed: _showQuote,
         tooltip: 'Increment',
         child: const Icon(Icons.lightbulb),
       ),
     );
+  }
+
+  void _showQuote() {
+    setState((){
+      _index += 1;
+    });
+
   }
 }
